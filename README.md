@@ -1,94 +1,109 @@
-# Lip Reading using Deep Learning (CNN + LSTM)
+🧠 Lip Reading from Silent Videos using Deep Learning
 
-This project implements a **visual speech recognition (lip reading) system** that predicts spoken text directly from lip movements in video — without using audio.
+This project focuses on automatic lip reading from silent video clips, converting visual mouth movements into readable text using deep learning techniques.
+The system processes video frames, extracts lip regions, learns spatio-temporal patterns, and predicts spoken sentences without using audio.
 
-The goal of this project was to gain hands-on experience with **computer vision, sequence modeling, and deep learning pipelines**, and to understand how real-world ML systems are built end-to-end.
+🚀 Project Highlights
 
----
+🎥 Lip reading from silent videos only
 
-## 🚀 Project Overview
+🧠 Deep Learning model using CNN + LSTM
 
-The system works as follows:
+🧾 CTC Loss for sequence-to-sequence prediction
 
-1. Input video of a speaker
-2. Extract frames from video
-3. Detect facial landmarks and crop the lip region
-4. Convert lip frames into fixed-length sequences
-5. Train a CNN + LSTM model using **CTC loss**
-6. Predict spoken text from unseen videos
+📐 Automatic lip region extraction
 
----
+🔁 End-to-end pipeline: video → frames → lips → text
 
-## 🧠 Model Architecture
+🧪 Trained and tested on real-world dataset samples
 
-- **CNN (TimeDistributed)** for spatial feature extraction
-- **LSTM layers** for temporal sequence modeling
-- **CTC Loss** for alignment-free sequence prediction
+🛠️ Technologies & Tools Used
+Programming & Frameworks
 
-Input → CNN → LSTM → LSTM → Dense → CTC Loss
+Python
 
+TensorFlow / Keras
 
----
+NumPy
 
-## 🛠 Technologies Used
+OpenCV
 
-- Python
-- TensorFlow / Keras
-- OpenCV
-- MediaPipe
-- NumPy
-- CNN + LSTM
-- CTC Loss
-- Sequence Padding & Encoding
+Computer Vision
 
----
+MediaPipe – Face & lip landmark detection
 
-## 📂 Project Structure
+Frame extraction and preprocessing
 
+Deep Learning Architecture
 
+CNN (Convolutional Neural Network) – spatial feature extraction
 
+LSTM (Long Short-Term Memory) – temporal sequence modeling
+
+CTC Loss (Connectionist Temporal Classification) – alignment-free sequence learning
+
+Dataset
+
+GRID Corpus (speaker-wise video and alignment files)
+
+Dataset not included in the repository due to size constraints.
+
+📂 Project Structure
 LipReadingProject/
-├── preprocessing/
+│
 ├── model/
-├── data/
-├── saved_model/
-├── requirements.txt
-└── README.md
+│   ├── cnn_lstm_model.py
+│   ├── train.py
+│   └── predict.py
+│
+├── preprocessing/
+│   ├── extract_frames.py
+│   ├── lip_extraction.py
+│   ├── data_loader.py
+│   └── label_parser.py
+│
+├── utils/
+│   └── text_encoder.py
+│
+├── .gitignore
+├── README.md
+└── requirements.txt
 
+🔄 Workflow Overview
 
----
+Video Input
 
-## ⚙️ How to Run
+Silent video clips are taken as input.
 
-### 1️⃣ Create virtual environment
-```bash
-python -m venv venv
+Frame Extraction
 
-2️⃣ Activate environment
-# Windows
-venv\Scripts\activate
+Each video is split into fixed-length frame sequences.
 
-# Linux / Mac
-source venv/bin/activate
+Lip Region Extraction
 
-3️⃣ Install dependencies
-pip install -r requirements.txt
+MediaPipe is used to detect facial landmarks.
 
-🧪 Training the Model
-python model/train.py
+Lip regions are cropped and resized.
 
+Data Preparation
 
-The model is trained using CTC loss for sequence prediction.
+Lip frames are normalized and stacked.
 
-🔮 Prediction
+Alignment files (.align) are parsed and encoded.
 
-To predict text from a lip video:
+Model Training
 
-python model/predict.py <video_name>
+CNN extracts spatial features from each frame.
 
+LSTM learns temporal dependencies.
 
-Example:
+CTC Loss aligns predictions with variable-length text labels.
 
+Prediction
+
+Given a new silent video, the model predicts the spoken sentence.
+
+🧪 Example Prediction
 python model/predict.py bbaf2n
 
 
@@ -96,37 +111,44 @@ Output:
 
 Predicted Text: bin blue at two
 
-📈 Key Learnings
+⚠️ Notes
 
-End-to-end deep learning pipeline design
+Due to large size, datasets, extracted frames, and trained models are excluded from the repository.
 
-Lip region extraction using facial landmarks
+The project is designed to be scalable to multiple speakers and vocabularies.
 
-Handling temporal data with CNN-LSTM
+Training on CPU is slow; GPU is recommended for faster experimentation.
 
-Training sequence models with CTC loss
+📌 Key Learnings
 
-Debugging performance and data issues
+Practical implementation of sequence learning with CTC
 
-Structuring ML projects like production systems
+Handling visual-only speech recognition
 
-🔮 Future Improvements
+Efficient preprocessing for video-based deep learning
 
-Improve accuracy with larger datasets
+End-to-end ML project structuring and deployment readiness
 
-Use 3D CNNs or Transformers
+📈 Future Improvements
 
-Add beam search decoding
+Add Transformer-based architectures
 
-Real-time webcam inference
+Improve accuracy with data augmentation
 
-Speaker-independent training
+Real-time lip reading support
 
-📌 Disclaimer
-
-This project is built for learning and experimentation purposes to understand visual speech recognition and deep learning systems.
+Web interface for live predictions
 
 👤 Author
 
 Asish Samiraju
-Front-End Developer | ML & Data Analytics Learner
+Aspiring ML Engineer | Deep Learning & Computer Vision
+🔗 GitHub: https://github.com/Asish8239
+
+⭐ Acknowledgements
+
+GRID Corpus Dataset
+
+TensorFlow & MediaPipe Teams
+
+Open-source deep learning community
