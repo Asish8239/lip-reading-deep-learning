@@ -1,0 +1,19 @@
+# Virtual environment
+venv/
+
+# Data folders
+data/
+frames/
+lips/
+
+# Trained models
+saved_model/
+*.h5
+
+# Large files
+*.mpg
+*.npy
+
+# Cache
+__pycache__/
+*.pyc
